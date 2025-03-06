@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧛‍♂️ Fancy Dracula Theme - Ultimate Showcase</title>
+    <!-- Import Hack Nerd Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/hack-subset.css" integrity="sha512-/qHXbsiBPbBHfpzZCQ0Z/+0EypDvI2CJY8bDpKFBOUNXTUTnbuWwXIXVF5aMvfTLiDH93QvkOJdZSYXA9Hb4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Import highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Import Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            /* Base Colors */
+            --bg-color: #282a36;
+            --bg-darker: #21222c;
+            --bg-lighter: #343746;
+            --text-color: #f8f8f2;
+            
+            /* Accent Colors */
+            --purple: #bd93f9;
+            --bright-purple: #caa9fa;
+            --red: #ff5555;
+            --bright-red: #ff6e6e;
+            --green: #50fa7b;
+            --bright-green: #69ff94;
+            --yellow: #f1fa8c;
+            --bright-yellow: #ffffa5;
+            --pink: #ff79c6;
+            --bright-pink: #ff92d0;
+            --cyan: #8be9fd;
+            --bright-cyan: #a4ffff;
+            --orange: #ffb86c;
+            --bright-orange: #ffcb86;
+            
+            /* Neutral Colors */
+            --comment: #6272a4;
+            --selection: #44475a;
+            --gray: #44475a;
+            --light-gray: #bfbfbf;
+            --dark-gray: #555;
+
+            /* Syntax Highlighting */
+            --keyword: var(--pink);
+            --variable: var(--text-color);
+            --function: var(--green);
+            --operator: var(--pink);
+            --string: var(--yellow);
+            --number: var(--purple);
+            --comment: #6272a4;
+            --class: var(--cyan);
+            --property: var(--cyan);
+            --parameter: var(--orange);
+            
+            /* UI Elements */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Fonts */
+            --font-mono: 'Hack', 'Fira Code', monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            
+            /* Z-index layers */
+            --z-tooltip: 10;
+            --z-modal: 100;
+            --z-overlay: 1000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all var(--transition-fast);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background-color: var(--selection);
+            color: var(--text-color);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--purple);
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 15px var(--purple);
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--purple); }
+            50% { box-shadow: 0 0 20px var(--purple), 0 0 30px var(--pink); }
+            100% { box-shadow: 0 0 5px var(--purple); }
+        }
+
+        /* Main Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-darker);
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--purple);
+        }
+
+        .nav-brand {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--purple);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-brand svg {
+            margin-right: 10px;
+            height: 24px;
+            width: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+            background-color: var(--bg-lighter);
+        }
+
+        .nav-links a.active {
+            color: var(--purple);
+            border-bottom: 2px solid var(--purple);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            position: relative;
+            width: 60px;
+            height: 28px;
+            border-radius: 14px;
+            background: var(--gray);
+            cursor: pointer;
+            overflow: hidden;
+            margin-left: 20px;
+        }
+
+        .theme-switcher::before {
+            content: '🌙';
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            transform: translateY(-50%);
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .theme-switcher::after {
+            content: '☀️';
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .theme-switcher-handle {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 20px;
+            height: 20px;
+            background: var(--purple);
+            border-radius: 50%;
+            transition: transform 0.3s;
+            z-index: 2;
+        }
+
+        .theme-switcher.light .theme-switcher-handle {
+            transform: translateX(32px);
+            background: var(--yellow);
+        }
+
+        /* Main sections */
+        main {
+            padding-top: 80px; /* Space for fixed nav */
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--gray);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            color: var(--pink);
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -15px;
+            left: 0;
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .section-subtitle {
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, var(--bg-lighter) 0%, var(--bg-color) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 50%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--light-gray);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .code-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .code-particle {
+            position: absolute;
+            color: var(--comment);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            opacity: 0.1;
+            animation-name: particleFall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes particleFall {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Interactive Terminal Section */
+        .terminal-section {
+            margin-bottom: 40px;
+        }
+
+        .terminal {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            padding: 15px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray);
+            position: relative;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background-color: var(--red);
+        }
+
+        .close-btn:hover {
+            background-color: var(--bright-red);
+        }
+
+        .minimize-btn {
+            background-color: var(--yellow);
+        }
+
+        .minimize-btn:hover {
+            background-color: var(--bright-yellow);
+        }
+
+        .maximize-btn {
+            background-color: var(--green);
+        }
+
+        .maximize-btn:hover {
+            background-color: var(--bright-green);
+        }
+
+        .terminal-title {
+            margin-left: 15px;
+            color: var(--light-gray);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-title i {
+            margin-right: 8px;
+            color: var(--cyan);
+        }
+
+        .terminal-options {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .terminal-option {
+            padding: 2px 8px;
+            background-color: var(--gray);
+            border-radius: var(--border-radius-sm);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .terminal-option:hover {
+            background-color: var(--bg-lighter);
+        }
+
+        .terminal-content {
+            flex: 1;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            padding-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .prompt {
+            color: var(--pink);
+            font-weight: bold;
+        }
+
+        .git-branch {
+            color: var(--green);
+        }
+
+        .branch-name {
+            color: var(--yellow);
+        }
+
+        .command {
+            color: var(--text-color);
+        }
+
+        .dir {
+            color: var(--bright-purple);
+            font-weight: bold;
+        }
+
+        .executable {
+            color: var(--red);
+        }
+
+        .file {
+            color: var(--text-color);
+        }
+
+        .input-line {
+            display: flex;
+            margin-top: auto;
+            border-top: 1px solid var(--gray);
+            padding-top: 10px;
+        }
+
+        .user-input {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            outline: none;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            flex-grow: 1;
+            caret-color: var(--pink);
+        }
+
+        .blink-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: var(--pink);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .output-success {
+            color: var(--green);
+        }
+
+        .output-error {
+            color: var(--red);
+        }
+
+        .output-warning {
+            color: var(--yellow);
+        }
+
+        .output-info {
+            color: var(--cyan);
+        }
+
+        /* Color Palette Section */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .color-card {
+            border-radius: var(--border-radius-md);
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .color-card::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            top: -25%;
+            left: -25%;
+        }
+
+        .color-card:hover::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .color-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .color-card:hover .color-info {
+            transform: translateY(0);
+        }
+
+        .color-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .color-value {
+            font-size: 12px;
+            font-family: var(--font-mono);
+        }
+
+        /* Shades section */
+        .color-shades {
+            display: flex;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+
+        .color-shade {
+            flex: 1;
+            height: 80px;
+            position: relative;
+            cursor: pointer;
+            transition: flex 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+        }
+
+        .color-shade:hover {
+            flex: 2;
+            color: var(--bg-darker);
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Syntax Highlighting Section */
+        .syntax-highlight-section {
+            margin-bottom: 50px;
+        }
+
+        .language-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            padding-bottom: 5px;
+        }
+
+        .language-tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .language-tab {
+            padding: 8px 15px;
+            background-color: var(--gray);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .language-tab:hover {
+            background-color: var(--bg-lighter);
+        }
+
+        .language-tab.active {
+            background-color: var(--purple);
+            color: var(--bg-darker);
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: var(--gray);
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .code-action {
+            cursor: pointer;
+            color: var(--light-gray);
+            transition: color 0.2s ease;
+        }
+
+        .code-action:hover {
+            color: var(--text-color);
+        }
+
+        .code-content {
+            padding: 15px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-content pre {
+            margin: 0;
+            background-color: transparent !important;
+        }
+
+        .code-content code {
+            font-family: var(--font-mono) !important;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .line-numbers {
+            position: absolute;
+            left: 0;
+            top: 15px;
+            padding-right: 10px;
+            color: var(--comment);
+            text-align: right;
+            font-size: 14px;
+            user-select: none;
+            border-right: 1px solid var(--gray);
+            background-color: var(--bg-darker);
+        }
+
+        .code-block-content {
+            margin-left: 40px;
+        }
+
+        /* Component Showcase Section */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .component-card {
+            background-color: var(--bg-lighter);
+            border-radius: var(--border-radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            border-color: var(--purple);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .component-card h3 {
+            color: var(--pink);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        /* Buttons Component */
+        .buttons-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .fancy-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .fancy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .fancy-button:active {
+            transform: translateY(1px);
+        }
+
+        .fancy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .fancy-button:hover::before {
+            transform: translateX(0);
+        }
+
+        .primary-btn {
+            background-color: var(--purple);
+            color: var(--bg-darker);
+        }
+
+        .success-btn {
+            background-color: var(--green);
+            color: var(--bg-darker);
+        }
+
+        .danger-btn {
+            background-color: var(--red);
+            color: var(--bg-darker);
+        }
+
+        .info-btn {
+            background-color: var(--cyan);
+            color: var(--bg-darker);
+        }
+
+        .warning-btn {
+            background-color: var(--yellow);
+            color: var(--bg-darker);
+        }
+
+        .outline-btn {
+            background-color: transparent;
+            border: 2px solid var(--purple);
+            color: var(--purple);
+        }
+
+        .ghost-btn {
+            background-color: transparent;
+            color: var(--purple);
+        }
+
+        .ghost-btn:hover {
+            background-color: rgba(189, 147, 249, 0.1);
+        }
+
+        /* Form elements */
+        .form-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--cyan);
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: var(--bg-darker);
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 2px rgba(189, 147, 249, 0.25);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--comment);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23bd93f9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 30px;
+        }
+
+        /* Toggle Switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .toggle-label {
+            margin-right: 10px;
+            color: var(--cyan);
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 26px;
+            margin-right: 10px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--text-color);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-status {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+
+        /* Cards Component */
+        .cards-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .dracula-card {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .dracula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            position: relative;
+            height: 140px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dracula-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(40, 42, 54, 0) 0%, rgba(40, 42, 54, 1) 100%);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            color: var(--pink);
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--purple);
+        }
+
+        .card-content {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 5px;
+        }
+
+        .card-badge {
+            padding: 4px 8px;
+            background-color: var(--gray);
+            color: var(--text-color);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.7rem;
+        }
+
+        /* Alerts Component */
+        .alerts-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+        }
+
+        .alert-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .alert-content {
+            flex-grow: 1;
+        }
+
+        .alert-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .alert-close {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 0;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        .alert-close:hover {
+            opacity: 1;
+        }
+
+        .alert-success {
+            background-color: rgba(80, 250, 123, 0.1);
+            color: var(--green);
+        }
+
+        .alert-success::before {
+            background-color: var(--green);
+        }
+
+        .alert-danger {
+            background-color: rgba(255, 85, 85, 0.1);
+            color: var(--red);
+        }
+
+        .alert-danger::before {
+            background-color: var(--red);
+        }
+
+        .alert-warning {
+            background-color: rgba(241, 250, 140, 0.1);
+            color: var(--yellow);
+        }
+
+        .alert-warning::before {
+            background-color: var(--yellow);
+        }
+
+        .alert-info {
+            background-color: rgba(139, 233, 253, 0.1);
+            color: var(--cyan);
+        }
+
+        .alert-info::before {
+            background-color: var(--cyan);
+        }
+
+        /* Badges Component */
+        .badges-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-primary {
+            background-color: var(--purple);
+            color: var(--bg-darker);
+        }
+
+        .badge-success {
+            background-color: var(--green);
+            color: var(--bg-darker);
+        }
+
+        .badge-danger {
+            background-color: var(--red);
+            color: var(--bg-darker);
+        }
+
+        .badge-warning {
+            background-color: var(--yellow);
+            color: var(--bg-darker);
+        }
+
+        .badge-info {
+            background-color: var(--cyan);
+            color: var(--bg-darker);
+        }
+
+        .badge-outline-primary {
+            background-color: transparent;
+            color: var(--purple);
+            border: 1px solid var(--purple);
+        }
+
+        .badge-pill {
+            border-radius: 50px;
+        }
+
+        /* Progress bars */
+        .progress-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress {
+            background-color: var(--bg-darker);
+            height: 10px;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: var(--border-radius-sm);
+            position: relative;
+        }
+
+        .progress-primary {
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+        }
+
+        .progress-success {
+            background: var(--green);
+        }
+
+        .progress-danger {
+            background: var(--red);
+        }
+
+        .progress-warning {
+            background: var(--yellow);
+        }
+
+        .progress-info {
+            background: var(--cyan);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: progressShimmer 2s infinite linear;
+        }
+
+        @keyframes progressShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Text Styles Section */
+        .text-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .text-card {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .text-card h3 {
+            color: var(--pink);
+            margin-bottom: 15px;
+        }
+
+        .text-sample {
+            margin-bottom: 15px;
+        }
+
+        .heading-showcase h1 {
+            color: var(--bright-purple);
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+
+        .heading-showcase h2 {
+            color: var(--purple);
+            margin-bottom: 8px;
+            font-size: 1.8em;
+        }
+
+        .heading-showcase h3 {
+            color: var(--pink);
+            margin-bottom: 8px;
+            font-size: 1.5em;
+        }
+
+        .heading-showcase h4 {
+            color: var(--cyan);
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+
+        .heading-showcase h5 {
+            color: var(--bright-cyan);
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .heading-showcase h6 {
+            color: var(--green);
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .text-styles p {
+            margin-bottom: 10px;
+        }
+
+        .text-regular {
+            font-weight: normal;
+        }
+
+        .text-bold {
+            font-weight: bold;
+            color: var(--bright-purple);
+        }
+
+        .text-italic {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .text-underline {
+            text-decoration: underline;
+            color: var(--pink);
+        }
+
+        .text-strikethrough {
+            text-decoration: line-through;
+            color: var(--red);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Diff View */
+        .diff-view {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            padding: 15px;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .diff-header {
+            padding: 8px 0;
+            color: var(--comment);
+            border-bottom: 1px solid var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .diff-file {
+            margin-bottom: 20px;
+        }
+
+        .diff-file-header {
+            background-color: var(--gray);
+            padding: 5px 10px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+        }
+
+        .diff-hunk-header {
+            color: var(--cyan);
+            padding: 5px 0;
+            margin-bottom: 5px;
+        }
+
+        .diff-line {
+            display: flex;
+            white-space: pre;
+        }
+
+        .diff-line-num {
+            width: 40px;
+            color: var(--comment);
+            text-align: right;
+            padding-right: 10px;
+            user-select: none;
+        }
+
+        .diff-line-content {
+            flex: 1;
+            padding-left: 10px;
+        }
+
+        .diff-added {
+            background-color: rgba(80, 250, 123, 0.1);
+        }
+
+        .diff-added .diff-line-content {
+            color: var(--green);
+        }
+
+        .diff-added .diff-line-content::before {
+            content: '+';
+            color: var(--green);
+            margin-right: 5px;
+        }
+
+        .diff-removed {
+            background-color: rgba(255, 85, 85, 0.1);
+        }
+
+        .diff-removed .diff-line-content {
+            color: var(--red);
+        }
+
+        .diff-removed .diff-line-content::before {
+            content: '-';
+            color: var(--red);
+            margin-right: 5px;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: var(--z-toast);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 320px;
+        }
+
+        .toast {
+            padding: 15px;
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-md);
+            animation: slideInRight 0.3s ease forwards;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid transparent;
+        }
+
+        .toast.toast-success {
+            border-color: var(--green);
+        }
+
+        .toast.toast-error {
+            border-color: var(--red);
+        }
+
+        .toast.toast-warning {
+            border-color: var(--yellow);
+        }
+
+        .toast.toast-info {
+            border-color: var(--cyan);
+        }
+
+        .toast-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .toast-success .toast-icon {
+            color: var(--green);
+        }
+
+        .toast-error .toast-icon {
+            color: var(--red);
+        }
+
+        .toast-warning .toast-icon {
+            color: var(--yellow);
+        }
+
+        .toast-info .toast-icon {
+            color: var(--cyan);
+        }
+
+        .toast-content {
+            flex-grow: 1;
+        }
+
+        .toast-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--light-gray);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            margin-left: 10px;
+            opacity: 0.7;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: toastProgress 5s linear forwards;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        @keyframes toastProgress {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--bg-darker);
+            border-radius: var(--border-radius-md);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: var(--pink);
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--light-gray);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            padding: 30px 0;
+            border-top: 1px solid var(--gray);
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            color: var(--pink);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--purple);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            padding: 8px 0;
+        }
+
+        .footer-link a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-link a i {
+            margin-right: 10px;
+            color: var(--purple);
+        }
+
+        .footer-link a:hover {
+            color: var(--purple);
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray);
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--purple);
+            color: var(--bg-darker);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            color: var(--bg-darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Custom Dracula specific elements */
+        .dracula-window {
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .dracula-window-header {
+            background-color: var(--bg-darker);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .dracula-window-title {
+            color: var(--light-gray);
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .dracula-window-body {
+            background-color: var(--bg-color);
+            padding: 20px;
+        }
+
+        .theme-variants-section {
+            margin-bottom: 40px;
+        }
+
+        .theme-variant {
+            flex: 0 0 280px;
+            height: 200px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-variant:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-variants {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            scroll-behavior: smooth;
+        }
+
+        /* Animations for code particles */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        .typing-code {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--purple);
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--purple) }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Dracula Theme Settings</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Theme Variant</label>
+                    <select class="form-select" id="themeVariantSelect">
+                        <option value="classic">Classic Dracula</option>
+                        <option value="darker">Dracula Darker</option>
+                        <option value="vivid">Dracula Vivid</option>
+                        <option value="soft">Dracula Soft</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Font Size</label>
+                    <input type="range" min="12" max="24" value="14" class="form-input" id="fontSizeRange">
+                    <div class="range-value" id="fontSizeValue">14px</div>
+                </div>
+                <div class="form-group">
+                    <label class="toggle-label">
+                        <span>Ligatures</span>
+                        <span class="toggle-switch">
+                            <input type="checkbox" id="ligaturesToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="toggle-label">
+                        <span>Glow Effects</span>
+                        <span class="toggle-switch">
+                            <input type="checkbox" id="glowToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="fancy-button ghost-btn" id="modalCancelBtn">Cancel</button>
+                <button class="fancy-button primary-btn" id="modalSaveBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#BD93F9"/>
+                <path d="M12 7.5C12 6.12 13.12 5 14.5 5C15.88 5 17 6.12 17 7.5C17 8.88 15.88 10 14.5 10C14.36 10 14.22 9.99 14.09 9.96C14.03 9.24 13.76 8.59 13.32 8.06C13.73 7.91 14 7.5 14 7C14 6.45 13.55 6 13 6C12.5 6 12.09 6.27 11.94 6.68C11.41 6.24 10.76 5.97 10.04 5.91C10.01 5.78 10 5.64 10 5.5C10 4.12 11.12 3 12.5 3C13.88 3 15 4.12 15 5.5C15 6.88 13.88 8 12.5 8C12.36 8 12.22 7.99 12.09 7.96C12.03 7.24 11.76 6.59 11.32 6.06C11.73 5.91 12 5.5 12 5C12 4.45 11.55 4 11 4C10.5 4 10.09 4.27 9.94 4.68C9.41 4.24 8.76 3.97 8.04 3.91C8.01 3.78 8 3.64 8 3.5C8 2.12 9.12 1 10.5 1C11.88 1 13 2.12 13 3.5C13 4.88 11.88 6 10.5 6C10.36 6 10.22 5.99 10.09 5.96C10.03 5.24 9.76 4.59 9.32 4.06C9.73 3.91 10 3.5 10 3C10 2.45 9.55 2 9 2" fill="#FF79C6"/>
+            </svg>
+            Fancy Dracula Theme
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#colors">Colors</a></li>
+            <li><a href="#syntax">Syntax</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#terminal">Terminal</a></li>
+        </ul>
+        <div class="theme-switcher" id="themeSwitcher">
+            <div class="theme-switcher-handle"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="code-particles" id="codeParticles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Fancy Dracula Theme</h1>
+            <p class="hero-description">
+                A dark and vibrant theme inspired by the classic Dracula palette, enhanced with modern UI elements
+                and subtle animations for a delightful coding experience.
+            </p>
+            <div class="hero-buttons">
+                <button class="fancy-button primary-btn" id="showSettingsBtn">
+                    <i class="fas fa-cog"></i> Theme Settings
+                </button>
+                <button class="fancy-button outline-btn" id="scrollToShowcaseBtn">
+                    <i class="fas fa-palette"></i> View Showcase
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <!-- Color Palette Section -->
+            <section id="colors" class="visible">
+                <div class="section-header">
+                    <h2 class="section-title">Color Palette</h2>
+                    <button class="fancy-button ghost-btn" id="copyPaletteBtn">
+                        <i class="fas fa-copy"></i> Copy All
+                    </button>
+                </div>
+                
+                <h3 class="section-subtitle">Primary Colors</h3>
+                <div class="color-palette">
+                    <div class="color-card" style="background-color: var(--purple);" data-color="#bd93f9">
+                        <div class="color-info">
+                            <div class="color-name">Purple</div>
+                            <div class="color-value">#bd93f9</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--pink);" data-color="#ff79c6">
+                        <div class="color-info">
+                            <div class="color-name">Pink</div>
+                            <div class="color-value">#ff79c6</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--cyan);" data-color="#8be9fd">
+                        <div class="color-info">
+                            <div class="color-name">Cyan</div>
+                            <div class="color-value">#8be9fd</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--green);" data-color="#50fa7b">
+                        <div class="color-info">
+                            <div class="color-name">Green</div>
+                            <div class="color-value">#50fa7b</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--yellow);" data-color="#f1fa8c">
+                        <div class="color-info">
+                            <div class="color-name">Yellow</div>
+                            <div class="color-value">#f1fa8c</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--red);" data-color="#ff5555">
+                        <div class="color-info">
+                            <div class="color-name">Red</div>
+                            <div class="color-value">#ff5555</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--orange);" data-color="#ffb86c">
+                        <div class="color-info">
+                            <div class="color-name">Orange</div>
+                            <div class="color-value">#ffb86c</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--comment);" data-color="#6272a4">
+                        <div class="color-info">
+                            <div class="color-name">Comment</div>
+                            <div class="color-value">#6272a4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Background Colors</h3>
+                <div class="color-palette">
+                    <div class="color-card" style="background-color: var(--bg-color);" data-color="#282a36">
+                        <div class="color-info">
+                            <div class="color-name">Background</div>
+                            <div class="color-value">#282a36</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--bg-darker);" data-color="#21222c">
+                        <div class="color-info">
+                            <div class="color-name">Darker</div>
+                            <div class="color-value">#21222c</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--bg-lighter);" data-color="#343746">
+                        <div class="color-info">
+                            <div class="color-name">Lighter</div>
+                            <div class="color-value">#343746</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="background-color: var(--selection);" data-color="#44475a">
+                        <div class="color-info">
+                            <div class="color-name">Selection</div>
+                            <div class="color-value">#44475a</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Color Gradient</h3>
+                <div class="color-shades">
+                    <div class="color-shade" style="background-color: var(--purple);">Purple</div>
+                    <div class="color-shade" style="background-color: #cc8ef8;">Shade 1</div>
+                    <div class="color-shade" style="background-color: #d985f6;">Shade 2</div>
+                    <div class="color-shade" style="background-color: #e67df4;">Shade 3</div>
+                    <div class="color-shade" style="background-color: #f274f2;">Shade 4</div>
+                    <div class="color-shade" style="background-color: #fd6cef;">Shade 5</div>
+                    <div class="color-shade" style="background-color: var(--pink);">Pink</div>
+                    <div class="color-shade" style="background-color: #eb7cca;">Shade 7</div>
+                    <div class="color-shade" style="background-color: #d480cf;">Shade 8</div>
+                    <div class="color-shade" style="background-color: #bd83d5;">Shade 9</div>
+                    <div class="color-shade" style="background-color: #a587da;">Shade 10</div>
+                    <div class="color-shade" style="background-color: var(--cyan);">Cyan</div>
+                </div>
+            </section>
+
+            <!-- Syntax Highlighting Section -->
+            <section id="syntax" class="syntax-highlight-section">
+                <div class="section-header">
+                    <h2 class="section-title">Syntax Highlighting</h2>
+                    <div class="language-tabs">
+                        <div class="language-tab active" data-lang="javascript">JavaScript</div>
+                        <div class="language-tab" data-lang="python">Python</div>
+                        <div class="language-tab" data-lang="html">HTML</div>
+                        <div class="language-tab" data-lang="css">CSS</div>
+                        <div class="language-tab" data-lang="json">JSON</div>
+                    </div>
+                </div>
+
+                <div class="code-block" id="jsCodeBlock">
+                    <div class="code-header">
+                        <span>main.js</span>
+                        <div class="code-actions">
+                            <i class="code-action fas fa-copy" title="Copy Code"></i>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                        </div>
+                        <div class="code-block-content">
+                            <pre><code class="language-javascript">// Dracula Theme Showcase
+class DraculaTheme {
+  constructor(options = {}) {
+    this.colors = {
+      background: '#282a36',
+      foreground: '#f8f8f2',
+      selection: '#44475a',
+      comment: '#6272a4',
+      purple: '#bd93f9',
+      cyan: '#8be9fd',
+      green: '#50fa7b',
+      pink: '#ff79c6'
+    };
+    this.initialize(options);
+  }
+  
+  initialize(options) {
+    console.log('Initializing Dracula Theme...');
+    // Implementation details
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block" id="pythonCodeBlock" style="display: none;">
+                    <div class="code-header">
+                        <span>theme.py</span>
+                        <div class="code-actions">
+                            <i class="code-action fas fa-copy" title="Copy Code"></i>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                        </div>
+                        <div class="code-block-content">
+                            <pre><code class="language-python"># Dracula Theme in Python
+class DraculaTheme:
+    def __init__(self, options=None):
+        if options is None:
+            options = {}
+            
+        self.colors = {
+            "background": "#282a36",
+            "foreground": "#f8f8f2",
+            "selection": "#44475a",
+            "comment": "#6272a4",
+            "purple": "#bd93f9",
+            "cyan": "#8be9fd",
+            "green": "#50fa7b",
+            "pink": "#ff79c6"
+        }
+        
+        self.initialize(options)
+        
+    def initialize(self, options):
+        print("Initializing Dracula Theme...")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block" id="htmlCodeBlock" style="display: none;">
+                    <div class="code-header">
+                        <span>index.html</span>
+                        <div class="code-actions">
+                            <i class="code-action fas fa-copy" title="Copy Code"></i>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                        </div>
+                        <div class="code-block-content">
+                            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Dracula Theme&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body class="dracula-theme"&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Dracula Theme&lt;/h1&gt;
+        &lt;p&gt;A dark theme for all the things!&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;!-- Content goes here --&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block" id="cssCodeBlock" style="display: none;">
+                    <div class="code-header">
+                        <span>style.css</span>
+                        <div class="code-actions">
+                            <i class="code-action fas fa-copy" title="Copy Code"></i>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                        </div>
+                        <div class="code-block-content">
+                            <pre><code class="language-css">:root {
+    --dracula-background: #282a36;
+    --dracula-foreground: #f8f8f2;
+    --dracula-selection: #44475a;
+    --dracula-comment: #6272a4;
+    --dracula-purple: #bd93f9;
+    --dracula-cyan: #8be9fd;
+    --dracula-green: #50fa7b;
+    --dracula-pink: #ff79c6;
+}
+
+.dracula-theme {
+    background-color: var(--dracula-background);
+    color: var(--dracula-foreground);
+    font-family: 'Hack', monospace;
+    line-height: 1.6;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block" id="jsonCodeBlock" style="display: none;">
+                    <div class="code-header">
+                        <span>theme.json</span>
+                        <div class="code-actions">
+                            <i class="code-action fas fa-copy" title="Copy Code"></i>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                        </div>
+                        <div class="code-block-content">
+                            <pre><code class="language-json">{
+    "name": "Dracula",
+    "version": "1.0.0",
+    "author": "Zeno Rocha",
+    "colors": {
+        "background": "#282a36",
+        "foreground": "#f8f8f2",
+        "selection": "#44475a",
+        "comment": "#6272a4",
+        "purple": "#bd93f9",
+        "cyan": "#8be9fd",
+        "green": "#50fa7b",
+        "pink": "#ff79c6",
+        "yellow": "#f1fa8c",
+        "red": "#ff5555",
+        "orange": "#ffb86c"
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Components Section -->
+            <section id="components">
+                <div class="section-header">
+                    <h2 class="section-title">UI Components</h2>
+                </div>
+
+                <div class="component-grid">
+                    <!-- Buttons Component -->
+                    <div class="component-card">
+                        <h3>Buttons</h3>
+                        <div class="buttons-showcase">
+                            <button class="fancy-button primary-btn">Primary</button>
+                            <button class="fancy-button success-btn">Success</button>
+                            <button class="fancy-button danger-btn">Danger</button>
+                            <button class="fancy-button info-btn">Info</button>
+                            <button class="fancy-button warning-btn">Warning</button>
+                            <button class="fancy-button outline-btn">Outline</button>
+                            <button class="fancy-button ghost-btn">Ghost</button>
+                        </div>
+                    </div>
+
+                    <!-- Forms Component -->
+                    <div class="component-card">
+                        <h3>Form Elements</h3>
+                        <div class="form-showcase">
+                            <div class="form-group">
+                                <label class="form-label">Text Input</label>
+                                <input type="text" class="form-input" placeholder="Enter text">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Select</label>
+                                <select class="form-select">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+                            <div class="toggle-container">
+                                <label class="toggle-label">Toggle Switch</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-status">On</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards Component -->
+                    <div class="component-card">
+                        <h3>Cards</h3>
+                        <div class="dracula-card">
+                            <div class="card-header">
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Card Title</h4>
+                                <p class="card-content">A brief description of the card content. This showcases how cards would look with the Dracula theme.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-badges">
+                                    <span class="card-badge">Tag</span>
+                                    <span class="card-badge">Dracula</span>
+                                </div>
+                                <button class="fancy-button ghost-btn">Action</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alerts Component -->
+                    <div class="component-card">
+                        <h3>Alerts</h3>
+                        <div class="alerts-showcase">
+                            <div class="alert alert-success">
+                                <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                                <div class="alert-content">
+                                    <div class="alert-title">Success</div>
+                                    <p>Operation completed successfully!</p>
+                                </div>
+                                <button class="alert-close">&times;</button>
+                            </div>
+                            <div class="alert alert-danger">
+                                <div class="alert-icon"><i class="fas fa-times-circle"></i></div>
+                                <div class="alert-content">
+                                    <div class="alert-title">Error</div>
+                                    <p>Something went wrong. Please try again.</p>
+                                </div>
+                                <button class="alert-close">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badges Component -->
+                    <div class="component-card">
+                        <h3>Badges</h3>
+                        <div class="badges-showcase">
+                            <span class="badge badge-primary">Primary</span>
+                            <span class="badge badge-success">Success</span>
+                            <span class="badge badge-danger">Danger</span>
+                            <span class="badge badge-warning">Warning</span>
+                            <span class="badge badge-info">Info</span>
+                            <span class="badge badge-outline-primary">Outline</span>
+                            <span class="badge badge-primary badge-pill">Pill</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bars Component -->
+                    <div class="component-card">
+                        <h3>Progress Bars</h3>
+                        <div class="progress-showcase">
+                            <div>
+                                <div class="progress-label">
+                                    <span>Primary</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-primary" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="progress-label">
+                                    <span>Success</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-success" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="progress-label">
+                                    <span>Danger</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-danger" style="width: 45%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Text Styles Section -->
+            <section id="text-styles">
+                <div class="section-header">
+                    <h2 class="section-title">Text Styles</h2>
+                </div>
+
+                <div class="text-showcase">
+                    <div class="text-card heading-showcase">
+                        <h3>Headings</h3>
+                        <h1>Heading Level 1</h1>
+                        <h2>Heading Level 2</h2>
+                        <h3>Heading Level 3</h3>
+                        <h4>Heading Level 4</h4>
+                        <h5>Heading Level 5</h5>
+                        <h6>Heading Level 6</h6>
+                    </div>
+
+                    <div class="text-card text-styles">
+                        <h3>Text Formatting</h3>
+                        <p class="text-regular">Regular text in the Dracula theme.</p>
+                        <p class="text-bold">Bold text for emphasis.</p>
+                        <p class="text-italic">Italic text for emphasis.</p>
+                        <p class="text-underline">Underlined text for links or emphasis.</p>
+                        <p class="text-strikethrough">Strikethrough text for removed content.</p>
+                        <p class="text-gradient">Gradient text for special elements.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terminal Section -->
+            <section id="terminal" class="terminal-section">
+                <div class="section-header">
+                    <h2 class="section-title">Interactive Terminal</h2>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <div class="terminal-button close-btn"></div>
+                            <div class="terminal-button minimize-btn"></div>
+                            <div class="terminal-button maximize-btn"></div>
+                        </div>
+                        <div class="terminal-title">
+                            <i class="fas fa-terminal"></i> dracula@fancy: ~/workspace
+                        </div>
+                        <div class="terminal-options">
+                            <div class="terminal-option">bash</div>
+                            <div class="terminal-option">+</div>
+                        </div>
+                    </div>
+                    <div class="terminal-content" id="terminalContent">
+                        <div class="terminal-line">
+                            <span class="prompt">dracula@fancy:</span>
+                            <span class="git-branch">~/workspace</span>
+                            <span class="branch-name">(main)</span>
+                            <span class="command">$ ls -la</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="dir">drwxr-xr-x</span>
+                            <span style="margin-left: 10px;">dir</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="executable">-rwxr-xr-x</span>
+                            <span style="margin-left: 10px;" class="executable">build.sh</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="file">-rw-r--r--</span>
+                            <span style="margin-left: 10px;" class="file">README.md</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">dracula@fancy:</span>
+                            <span class="git-branch">~/workspace</span>
+                            <span class="branch-name">(main)</span>
+                            <span class="command">$ echo "Hello, Dracula!"</span>
+                        </div>
+                        <div class="terminal-line">
+                            Hello, Dracula!
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">dracula@fancy:</span>
+                            <span class="git-branch">~/workspace</span>
+                            <span class="branch-name">(main)</span>
+                            <span class="command">$ </span>
+                            <span class="typing-code">theme --apply dracula</span>
+                        </div>
+                        <div class="terminal-line output-success">
+                            ✓ Dracula theme applied successfully!
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">dracula@fancy:</span>
+                            <span class="git-branch">~/workspace</span>
+                            <span class="branch-name">(main)</span>
+                            <span class="command">$ </span>
+                        </div>
+                    </div>
+                    <div class="input-line">
+                        <span class="prompt">$ </span>
+                        <input type="text" class="user-input" id="terminalInput" placeholder="Type a command...">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diff Section -->
+            <section id="diff-section">
+                <div class="section-header">
+                    <h2 class="section-title">Code Diff View</h2>
+                </div>
+
+                <div class="diff-view">
+                    <div class="diff-header">
+                        diff --git a/theme.js b/theme.js
+                    </div>
+                    <div class="diff-file">
+                        <div class="diff-file-header">
+                            @@ -10,6 +10,9 @@ class DraculaTheme {
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">10</div>
+                            <div class="diff-line-content">      purple: '#bd93f9',</div>
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">11</div>
+                            <div class="diff-line-content">      cyan: '#8be9fd',</div>
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">12</div>
+                            <div class="diff-line-content">      green: '#50fa7b',</div>
+                        </div>
+                        <div class="diff-line diff-added">
+                            <div class="diff-line-num">13</div>
+                            <div class="diff-line-content">      yellow: '#f1fa8c',</div>
+                        </div>
+                        <div class="diff-line diff-added">
+                            <div class="diff-line-num">14</div>
+                            <div class="diff-line-content">      red: '#ff5555',</div>
+                        </div>
+                        <div class="diff-line diff-added">
+                            <div class="diff-line-num">15</div>
+                            <div class="diff-line-content">      orange: '#ffb86c',</div>
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">16</div>
+                            <div class="diff-line-content">      pink: '#ff79c6'</div>
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">17</div>
+                            <div class="diff-line-content">    };</div>
+                        </div>
+                        <div class="diff-line">
+                            <div class="diff-line-num">18</div>
+                            <div class="diff-line-content">    this.initialize(options);</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theme Variants Section -->
+            <section id="theme-variants" class="theme-variants-section">
+                <div class="section-header">
+                    <h2 class="section-title">Theme Variants</h2>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
