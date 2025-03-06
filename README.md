@@ -45,6 +45,18 @@ The preview image demonstrates various terminal elements with the applied theme:
      - Branch name: Yellow (`#f1fa8c`)
    - Command cursor: Styled with accent color
 
+## Theme Gradient
+
+The project features a distinctive color gradient that transitions between the theme's primary colors, creating a cohesive visual identity:
+
+![Fancy Dracula Gradient](gradient.png)
+
+The gradient flows through the following colors:
+
+- Purple (`#bd93f9`) → Pink (`#ff79c6`) → Cyan (`#8be9fd`)
+
+This gradient is used for accent elements, highlight effects, and can be incorporated when extending the theme to other environments for consistent branding.
+
 ## Installation in Warp Terminal
 
 1. Open Warp Terminal
@@ -55,7 +67,7 @@ The preview image demonstrates various terminal elements with the applied theme:
 
 ## Extending to Other Environments
 
-This project aims to extend this color scheme to various other development environments to maintain a consistent look and feel across different tools.
+This project aims to extend this color scheme to various other development environments to maintain a consistent look and feel across different tools. When extending to other environments, consider incorporating both the individual colors and the signature gradient where appropriate.
 
 ## Acknowledgments
 
