@@ -1,4 +1,4 @@
-Fancy Dracula Theme for Web Styling
+#Fancy Dracula Theme for Web Styling
 
 This project extends the popular "Fancy Dracula" theme for [Warp Terminal](https://warp.dev) to other environments.
 
