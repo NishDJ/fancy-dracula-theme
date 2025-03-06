@@ -1,8 +1,8 @@
-#Fancy Dracula Theme for Web Styling
+# Fancy Dracula Theme
 
 This project extends the popular "Fancy Dracula" theme for [Warp Terminal](https://warp.dev) to other environments.
 
-## Warp Terminal Theme Preview
+## Warp Terminal Theme Extension
 
 The `fancy_dracula.yaml.svg` file in this repository provides a visual preview of the Fancy Dracula theme in Warp Terminal. This SVG file showcases:
 
@@ -27,7 +27,6 @@ The preview image demonstrates various terminal elements with the applied theme:
      - Magenta: `#ff79c6`
      - Cyan: `#8be9fd`
      - White: `#bbb`
-
    - **Bright Colors:**
      - Black: `#555`
      - Red: `#f55`
@@ -67,7 +66,9 @@ This gradient is used for accent elements, highlight effects, and can be incorpo
 
 ## Extending to Other Environments
 
-This project aims to extend this color scheme to various other development environments to maintain a consistent look and feel across different tools. When extending to other environments, consider incorporating both the individual colors and the signature gradient where appropriate.
+This project aims to extend this color scheme to various other development environments to maintain a consistent look and feel across different tools.
+
+When extending to other environments, consider incorporating both the individual colors and the signature gradient where appropriate.
 
 ## Acknowledgments
 
